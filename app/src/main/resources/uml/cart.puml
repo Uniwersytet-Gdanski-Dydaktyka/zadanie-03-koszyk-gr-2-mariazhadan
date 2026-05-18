@@ -1,0 +1,57 @@
+@startuml
+
+class Product {
+  - code : String
+  - name : String
+  - price : double
+  - discountPrice : double
+}
+
+class Cart {
+  - products : List<Product>
+  - promotions : List<Promotion>
+  - sorter : ProductSorter
+  + add(Product)
+  + getProducts()
+  + addPromotion(Promotion)
+  + applyPromotions()
+  + totalPrice(List<Product>)
+  + findCheapest()
+  + findMostExpensive()
+  + nCheapest(int)
+  + nMostExpensive(int)
+  + setSorter(ProductSorter)
+  + sort()
+}
+
+interface Promotion {
+  + apply(List<Product>)
+}
+
+class DiscountOver300
+class Buy2Get1Free
+class Coupon30Percent
+class FreeCup
+
+Promotion <|.. DiscountOver300
+Promotion <|.. Buy2Get1Free
+Promotion <|.. Coupon30Percent
+Promotion <|.. FreeCup
+
+interface ProductSorter {
+  + sort(List<Product>)
+}
+
+class SortByPriceDesc
+class SortByNameAsc
+class SortByPriceThenName
+
+ProductSorter <|.. SortByPriceDesc
+ProductSorter <|.. SortByNameAsc
+ProductSorter <|.. SortByPriceThenName
+
+Cart --> Product
+Cart --> Promotion
+Cart --> ProductSorter
+
+@enduml
