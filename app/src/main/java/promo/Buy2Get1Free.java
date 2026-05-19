@@ -7,7 +7,13 @@ import java.util.List;
 
 public class Buy2Get1Free implements Promotion {
     public List<Product> apply(List<Product> products) {
-        List<Product> sorted = new ArrayList<>(products);
+        List<Product> sorted = new ArrayList<>();
+        if (products == null) return sorted;
+
+        for (Product p : products) {
+            if (p != null) sorted.add(p);
+        }
+
         sorted.sort(Comparator.comparingDouble(Product::getPrice).reversed());
 
         List<Product> result = new ArrayList<>();

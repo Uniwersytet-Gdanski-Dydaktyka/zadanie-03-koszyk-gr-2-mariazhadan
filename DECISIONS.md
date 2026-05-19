@@ -20,7 +20,7 @@ Powód:
 możliwość zmiany kryterium sortowania w runtime
 brak if/switch w Cart
 
-## Klasa Product powinna być niemutowalna.
-Po utworzeniu obiekt nie zmienia swoich danych, co zwiększa bezpieczeństwo programu.
-Promocje tworzą nowe obiekty Product zamiast zmieniać istniejące.
-Dzięki temu kod jest prostszy i mniej podatny na błędy.
+## Klasa Product w tej implementacji jest częściowo mutowalna
+Główne dane produktu (code, name, price) są stałe i nie zmieniają się. Dzięki temu podstawowe informacje o produkcie są bezpieczne.
+Pole discountPrice jest zmienne, ponieważ promocje mogą się zmieniać w czasie. To pozwala aktualizować cenę rabatową bez tworzenia nowego obiektu.
+Takie rozwiązanie jest prostsze i wygodne w użyciu, ale mniej bezpieczne niż pełna niemutowalność.

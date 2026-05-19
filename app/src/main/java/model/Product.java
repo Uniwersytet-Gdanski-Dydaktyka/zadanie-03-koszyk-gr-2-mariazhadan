@@ -4,20 +4,15 @@ public final class Product {
     private final String code;
     private final String name;
     private final double price;
-    private final double discountPrice;
+    private double discountPrice;
 
-    public Product(String code, String name, double price, double discountPrice ) {
+    public Product(String code, String name, double price) {
         if (code == null || name == null || price < 0) {
             throw new IllegalArgumentException();
         }
         this.code = code;
         this.name = name;
         this.price = price;
-        this.discountPrice = discountPrice;
-    }
-
-    public Product(String code, String name, double price) {
-        this(code, name, price, 0);
     }
 
     public String getCode() {
@@ -34,6 +29,13 @@ public final class Product {
 
     public double getDiscountPrice() {
         return discountPrice;
+    }
+
+    public void setDiscountPrice(double discountPrice) {
+        if (discountPrice < 0) {
+            throw new IllegalArgumentException();
+        }
+        this.discountPrice = discountPrice;
     }
 
 }

@@ -5,6 +5,11 @@ class Product {
   - name : String
   - price : double
   - discountPrice : double
+  + getCode()
+  + getName()
+  + getPrice()
+  + getDiscountPrice()
+  + setDiscountPrice(double)
 }
 
 class Cart {
@@ -22,16 +27,27 @@ class Cart {
   + nMostExpensive(int)
   + setSorter(ProductSorter)
   + sort()
+  - copyProduct(Product) 
+  - copyList(List<Product>) 
 }
 
 interface Promotion {
   + apply(List<Product>)
 }
 
-class DiscountOver300
-class Buy2Get1Free
-class Coupon30Percent
-class FreeCup
+class DiscountOver300 {
+  + apply(List<Product>)
+}
+class Buy2Get1Free {
+  + apply(List<Product>)
+}
+class Coupon30Percent {
+  - productCode : String
+  + apply(List<Product>)
+}
+class FreeCup {
+  + apply(List<Product>)
+}
 
 Promotion <|.. DiscountOver300
 Promotion <|.. Buy2Get1Free
@@ -42,9 +58,15 @@ interface ProductSorter {
   + sort(List<Product>)
 }
 
-class SortByPriceDesc
-class SortByNameAsc
-class SortByPriceThenName
+class SortByPriceDesc {
+  + sort(List<Product>)
+}
+class SortByNameAsc {
+  + sort(List<Product>)
+}
+class SortByPriceThenName {
+  + sort(List<Product>)
+}
 
 ProductSorter <|.. SortByPriceDesc
 ProductSorter <|.. SortByNameAsc
